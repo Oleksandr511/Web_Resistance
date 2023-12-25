@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    if (ViewData["ring"] == null) ViewData["ring"] = 0;
+}
+<div class="text-center">
+    <h1 class="display-4" style="background-color:powderblue;">Welcome</h1>
+    <p style="color:rgb(12, 130, 145);">Calculate your resistor</p>
+</div>
+
+<svg width="320" height="140">
+    <rect width="320" height="140" style="fill: rgb(55, 223, 235); stroke-width:3;stroke:rgb(0,0,0)" />
+    <rect x="20" y="20" width="280" height="100" style="fill:bisque;stroke-width:3;stroke:rgb(0,0,0)" />
+
+    @if((int)@ViewData["ring"]>=1)
+    {
+        <rect id="r1" x="60" y="20" width="10" height="100" style="fill:@ViewData["r1_color"];stroke-width:@(((int)ViewData["ring"]>0) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+
+    @if((int)@ViewData["ring"]>=2)
+    {
+        <rect id="r2" x="100" y="20" width="10" height="100" style="fill:@ViewData["r2_color"];stroke-width:@(((int)ViewData["ring"]>1) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+
+    @if((int)@ViewData["ring"]>=3)
+    {
+        <rect id="r3" x="140" y="20" width="10" height="100" style="fill:@ViewData["r3_color"];stroke-width:@(((int)ViewData["ring"]>2) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+
+    @if((int)@ViewData["ring"]>=4)
+    {
+        <rect id="r4" x="180" y="20" width="10" height="100" style="fill:@ViewData["r4_color"];stroke-width:@(((int)ViewData["ring"]>3) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+
+    @if((int)@ViewData["ring"]>=5)
+    {
+        <rect id="r5" x="220" y="20" width="10" height="100" style="fill:@ViewData["r5_color"];stroke-width:@(((int)ViewData["ring"]>4) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+
+    @if((int)@ViewData["ring"]==6)
+    {
+        <rect id="r6" x="260" y="20" width="10" height="100" style="fill:@ViewData["r6_color"];stroke-width:@(((int)ViewData["ring"]>5) ? 3 : 0);stroke:rgb(0,0,0)" />
+    }
+</svg>
+
+<form method="post" action="/Home/Rings">
+  <input type="radio" id="3" name="rings" value="3">
+  <label for="3">3</label>
+  <input type="radio" id="4" name="rings" value="4">
+  <label for="4">4</label>
+  <input type="radio" id="5" name="rings" value="5">
+  <label for="5">5</label>
+  <input type="radio" id="6" name="rings" value="6">
+  <label for="6">6</label>
+  <button type="submit">Submit</button>
+</form>
+<p>Selected number of rings: @ViewData["ring"]</p>
+<br/>
+
+<form method="post" action="/Home/Index">
+    @for (int i = 1; i < (int)@ViewData["ring"]+1; i++)
+    {
+    <select name="r@(i)_color" asp-for="@ViewData[$"r{i}_color"]" onchange="r@(i).style.fill = value;">
+    <option value="transparent" style="background-color: transparent;">missing</option>
+    @if(i!=5 && i!=6)
+    {
+        <option value="black" style="background-color: black;">black</option>
+    }
+    @if(i!=5)
+    {
+        <option value="orange" style="background-color: orange;">orange</option>
+        <option value="yellow" style="background-color: yellow;">yellow</option>
+        <option value="white" style="background-color: white;">white</option>
+    }
+    @if(i!=6)
+    {
+        <option value="green" style="background-color: green;">green</option>
+        <option value="grey" style="background-color: grey;">grey</option>
+    }
+    @if(i!=6 && i!=1 && i!=2 && i!=3)
+    {
+        <option value="silver" style="background-color: silver;">silver</option>
+        <option value="gold" style="background-color: gold;">gold</option>
+    }
+    <option value="brown" style="background-color: brown;">brown</option>
+    <option value="red" style="background-color: red;">red</option>
+    <option value="blue" style="background-color: blue;">blue</option>
+    <option value="purple" style="background-color: purple;">purple</option>
+    <input type="hidden" name="ring" value="@ViewData["ring"]">
+
+</select>
+}
+<br/>
+    <label>Resistance:@ViewData["resistance"]</label>
+<br/>
+<br/>
+    <input type="submit" value="calculate">
+    <br/>
+<input type="submit" value="Додати в обрані" asp-action="AddToDatabase" class="btn btn-warning" />
+</form>
+
+
