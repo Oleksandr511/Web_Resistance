@@ -8,7 +8,11 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
@@ -19,5 +23,60 @@ html {
 
 body {
   margin-bottom: 60px;
-  text-align:center;
+  text-align: center;
+}
+
+#myForm {
+  align-items: center;
+  min-height: 30px;
+  max-width: 500px;
+  padding: 10px;
+  border-radius: 2mm;
+  background-color: rgb(140, 245, 243);
+  margin: 0 auto;
+}
+
+#myLabel {
+  align-items: center;
+  min-height: 30px;
+  padding: 5px;
+  border-radius: 2mm;
+  background-color: violet;
+  max-width: 100%;
+}
+
+#authorTitle {
+  align-items: center;
+  color: aliceblue;
+  background-color: rgb(13, 20, 215);
+  margin: 0 auto;
+}
+
+#authorDescription {
+  align-items: center;
+  background-color: rgb(211, 233, 42);
+  margin: 0 auto;
+}
+
+
+
+#button1:hover {
+  background-color: #04AA6D;
+  border: 2px solid #0b4c64;
+  color: white;
+  transform: translateX(3px) scale(1.2);
+}
+
+#calculate:hover {
+  background-color: #04AA6D;
+  border: 2px solid #06384b;
+  color: white;
+  transform: scale(1.2);
+}
+
+#button2:hover {
+  background-color: #04AA6D;
+  border: 2px solid #0b4c64;
+  color: white;
+  transform: translateX(3px) scale(1.2);
 }

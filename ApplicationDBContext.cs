@@ -29,7 +29,7 @@ public partial class ApplicationDBContext : DbContext
         if (!optionsBuilder.IsConfigured)
         {
             //optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CalculatorDB;Trusted_Connection=True;");
-            optionsBuilder.UseMySQL("server=127.0.0.1;uid=root;database=CalculatorDB");
+            optionsBuilder.UseSqlServer("Data Source=SQL8001.site4now.net;Initial Catalog=db_aa352e_mydb;User Id=db_aa352e_mydb_admin;Password=Generatedb8*");
         }
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)

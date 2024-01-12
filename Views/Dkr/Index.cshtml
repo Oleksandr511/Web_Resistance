@@ -1,0 +1,31 @@
+<h1 style="background-color: magenta;">Conversion of distance and length units</h1>
+<form method="post" action="/Controller/Dkr">
+    <label for="nums">I want to convert:</label><br>
+    <input type="number" step="any" min="0" required id="nums" name="nums" value="0"><br>
+
+    <label for="first">Value 1:</label>
+    <select name="first" id="first">
+        <option selected>chose value 1</option>
+        <option value="km">kilometers</option>
+        <option value="ps">parsecs</option>
+        <option value="ft">feet</option>
+    </select>
+
+    <label for="second">Value 2:</label>
+    <select name="second" id="second">
+        <option selected>chose value 2</option>
+        <option value="km">kilometers</option>
+        <option value="ps">parsecs</option>
+        <option value="ft">feet</option>
+    </select>
+
+
+
+    <button type="submit" id="button2">Submit</button>
+</form>
+
+<form action="" id="myForm">
+    <label id="myLabel">
+        @ViewData["result"]
+    </label>
+</form>
